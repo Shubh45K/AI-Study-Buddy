@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Study Buddy</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+        <div class="logo">
+            <h2>AI Study Buddy</h2>
+        </div>
+
+        
+
+        <button class="new-chat-btn" onclick="newChat()">
+            + New Chat
+        </button>
+
+        <div class="menu">
+
+            <div class="menu-item">
+                Dashboard
+            </div>
+
+            <div class="menu-item">
+                Study Notes
+            </div>
+
+            <div class="menu-item">
+                Quiz Generator
+            </div>
+
+            <div class="menu-item">
+                Flashcards
+            </div>
+
+            <div class="menu-item">
+                Chat History
+            </div>
+
+        </div>
+
+        <div class="history-section">
+
+    <h4>Recent Chats</h4>
+
+    <div id="chatHistory">
+
+        <div class="history-item">
+            Machine Learning
+        </div>
+
+        <div class="history-item">
+            Python Notes
+        </div>
+
+        <div class="history-item">
+            Data Science Quiz
+        </div>
+
+    </div>
+
+</div>
+
+        <div class="sidebar-footer">
+            
+            <span>Developed by Shubh45</span>
+        </div>
+
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <!-- Header -->
+        <div class="header">
+
+            <div class="title">
+                AI-Powered Study Buddy
+            </div>
+
+            <div class="user-profile">
+                <i class="fa-solid fa-user"></i>
+                Shubham
+            </div>
+
+        </div>
+
+        <!-- Welcome Section -->
+        <div id="welcomeSection" class="welcome-section">
+
+            <h1>Your Personal AI Learning Assistant</h1>
+
+            <p>
+                Understand concepts faster, summarize notes,
+                generate quizzes, create flashcards and prepare
+                for interviews using AI-powered learning tools.
+            </p>
+
+            <div class="quick-actions">
+
+                <button onclick="fillPrompt('Explain in simple terms')">
+                    Explain Concepts
+                </button>
+
+                <button onclick="fillPrompt('Summarize study notes')">
+                    Summarize Notes
+                </button>
+
+                <button onclick="fillPrompt('Generate 10 quiz questions')">
+                    Generate Quiz
+                </button>
+
+                <button onclick="fillPrompt('Create flashcards')">
+                    Create Flashcards
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Chat Area -->
+        <div class="chat-container" id="chatContainer">
+
+        </div>
+
+        <!-- Typing Indicator -->
+        <div id="typingIndicator"
+             class="typing-indicator"
+             style="display:none;">
+            AI is thinking...
+        </div>
+
+        <!-- Input Section -->
+        <div class="input-section">
+
+            <!-- Hidden Inputs -->
+
+            <input type="file"
+                   id="fileInput"
+                   hidden
+                   accept=".pdf,.doc,.docx,.txt">
+
+            <input type="file"
+                   id="imageInput"
+                   hidden
+                   accept="image/*">
+
+            <!-- Toolbar -->
+            <div id="uploadedPreview"></div>
+            <div class="input-toolbar">
+
+                <button class="tool-btn"
+                        onclick="document.getElementById('fileInput').click()"
+                        title="Upload Document">
+
+                    <i class="fa-solid fa-file-lines"></i>
+
+                </button>
+
+                <button class="tool-btn"
+                        onclick="document.getElementById('imageInput').click()"
+                        title="Upload Image">
+
+                    <i class="fa-solid fa-image"></i>
+
+                </button>
+
+                <button class="tool-btn"
+                        id="voiceBtn"
+                        onclick="startVoiceInput()"
+                        title="Voice Input">
+
+                    <i class="fa-solid fa-microphone"></i>
+
+                </button>
+
+            </div>
+
+            <!-- Chat Input -->
+
+            <div class="input-box">
+
+                <textarea
+                    id="userInput"
+                    placeholder="Ask anything about your studies..."
+                    rows="1"></textarea>
+
+                <button id="sendBtn"
+                        onclick="sendMessage()">
+
+                    Send
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
